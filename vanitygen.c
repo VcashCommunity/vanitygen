@@ -300,6 +300,7 @@ usage(const char *name)
 "-1            Stop after first match\n"
 "-L            Generate litecoin address\n"
 "-N            Generate namecoin address\n"
+"-V            Generate vcash address\n"
 "-T            Generate bitcoin testnet address\n"
 "-X <version>  Generate address with the given version\n"
 "-F <format>   Generate address with the given format (pubkey, compressed, script)\n"
@@ -350,7 +351,7 @@ main(int argc, char **argv)
 
 	int i;
 
-	while ((opt = getopt(argc, argv, "Lvqnrik1eE:P:NTX:F:t:h?f:o:s:")) != -1) {
+	while ((opt = getopt(argc, argv, "Lvqnrik1eE:P:VNTX:F:t:h?f:o:s:")) != -1) {
 		switch (opt) {
 		case 'c':
 		        compressed = 1;
@@ -385,6 +386,11 @@ main(int argc, char **argv)
 			addrtype = 48;
 			privtype = 176;
 			scriptaddrtype = -1;
+			break;
+		case 'V':
+			addrtype = 71;
+			privtype = 199;
+			scriptaddrtype = 8;
 			break;
 		case 'T':
 			addrtype = 111;

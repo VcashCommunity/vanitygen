@@ -59,6 +59,7 @@ usage(const char *name)
 "-1            Stop after first match\n"
 "-L            Generate litecoin address\n"
 "-N            Generate namecoin address\n"
+"-V            Generate vcash address\n"
 "-T            Generate bitcoin testnet address\n"
 "-X <version>  Generate address with the given version\n"
 "-F <format>   Generate address with the given format (pubkey, compressed)\n"
@@ -75,7 +76,7 @@ usage(const char *name)
 "-t <threads>  Set target thread count per multiprocessor\n"
 "-g <x>x<y>    Set grid size\n"
 "-b <invsize>  Set modular inverse ops per thread\n"
-"-V            Enable kernel/OpenCL/hardware verification (SLOW)\n"
+"-K            Enable kernel/OpenCL/hardware verification (SLOW)\n"
 "-f <file>     File containing list of patterns, one per line\n"
 "              (Use \"-\" as the file name for stdin)\n"
 "-o <file>     Write pattern matches to <file>\n"
@@ -127,7 +128,7 @@ main(int argc, char **argv)
 	int i;
 
 	while ((opt = getopt(argc, argv,
-			     "vqik1LNTX:F:eE:p:P:d:w:t:g:b:VSh?f:o:s:D:")) != -1) {
+			     "vqik1LNVTX:F:eE:p:P:d:w:t:g:b:KSh?f:o:s:D:")) != -1) {
 		switch (opt) {
 		case 'v':
 			verbose = 2;
@@ -151,6 +152,10 @@ main(int argc, char **argv)
 		case 'N':
 			addrtype = 52;
 			privtype = 180;
+			break;
+		case 'V':
+			addrtype = 71;
+			privtype = 199;
 			break;
 		case 'T':
 			addrtype = 111;
@@ -225,7 +230,7 @@ main(int argc, char **argv)
 				return 1;
 			}
 			break;
-		case 'V':
+		case 'K':
 			verify_mode = 1;
 			break;
 		case 'S':

@@ -1402,9 +1402,9 @@ vg_prefix_context_add_patterns(vg_context_t *vcp,
 			bw = "\"3\"";
 			break;
 		case 48:
-                        ats = "litecoin";
-                        bw = "\"L\"";
-                        break;
+			ats = "litecoin";
+			bw = "\"L\"";
+			break;
 		case 111:
 			ats = "testnet";
 			bw = "\"m\" or \"n\"";
@@ -1412,6 +1412,10 @@ vg_prefix_context_add_patterns(vg_context_t *vcp,
 		case 52:
 			ats = "namecoin";
 			bw = "\"M\" or \"N\"";
+			break;
+		case 71:
+			ats = "vcash";
+			bw = "\"V\"";
 			break;
 		default:
 			break;
